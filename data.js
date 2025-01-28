@@ -167,5 +167,6 @@ const sportsTeams = [
     { name: "Alfa Romeo F1 Team Stake", sport: "Motorsport", league: "Formula 1" },
     { name: "Haas F1 Team", sport: "Motorsport", league: "Formula 1" }
 ];
-  
-  
+
+
+module.exports = sportsTeams
