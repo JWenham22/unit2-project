@@ -8,17 +8,16 @@
 <body>
     <h1>Add a Team</h1>
     <form action="/teams" method="POST">
-        <label for="name">Sport</label>
-        <input type="text" name="Sport" id="Sport" />
-
-        <label for="name">League</label>
-        <input type="text" name="League" id="League">
-
         <label for="name">Team Name</label>
-        <input type="text" name="Team Name" id="Team Name" />
-
-        <button type="Submit">Add Team</button>
-        <a href="/teams">Your Teams</a>
+        <input type="text" name="name" id="name" required />
+      
+        <label for="sport">Sport</label>
+        <input type="text" name="sport" id="sport" required />
+      
+        <label for="league">League</label>
+        <input type="text" name="league" id="league" required />
+      
+        <button type="submit">Add Team</button>
     </form>
 </body>
 </html>

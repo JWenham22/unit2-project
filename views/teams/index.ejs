@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Library</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Your Teams</h1>
+    <ul>
+      <% teams.forEach((team) => { %>
+        <li>
+          <strong>Name:</strong> <%= team.name %> <br>
+          <strong>Sport:</strong> <%= team.sport %> <br>
+          <a href="/teams/<%= team._id %>">View</a>
+          <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  <a href="/teams/new">Add New Team</a>
+</body>
+</html>

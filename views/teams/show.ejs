@@ -1,0 +1,16 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= team.name %></title>
+</head>
+<body>
+  <h1><%= team.name %></h1>
+  <p><strong>Sport:</strong> <%= team.sport %></p>
+  <p><strong>League:</strong> <%= team.league %></p>
+  <a href="/users/<%= team.owner %>/teams">Back to Teams</a>
+</body>
+</html>
