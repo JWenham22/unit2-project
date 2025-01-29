@@ -6,11 +6,15 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 
 const app = express();
-const port = process.env.PORT || 3000;
+
+const port = process.env.PORT ? process.env.PORT : '3000';
+const path = require('path');
+
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -35,15 +39,6 @@ const teamsController = require('./controllers/teams');
 
 app.use('/auth', authController);
 app.use('/teams', teamsController);
-
-// // Root route
-// app.get('/', (req, res) => {
-//   if (req.session.user) {
-//     res.redirect(`/users/${req.session.user._id}/teams`);
-//   } else {
-//     res.render('index.ejs');
-//   }
-// });
 
 app.get('/', (req, res) => {
   if (req.session.user) {
