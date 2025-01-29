@@ -6,18 +6,27 @@
     <title>Add a Team</title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Add a Team</h1>
-    <form action="/teams" method="POST">
-        <label for="name">Team Name</label>
-        <input type="text" name="name" id="name" required />
-      
-        <label for="sport">Sport</label>
-        <input type="text" name="sport" id="sport" required />
-      
-        <label for="league">League</label>
-        <input type="text" name="league" id="league" required />
-      
-        <button type="submit">Add Team</button>
-    </form>
+    <a href="/teams/new?sport=Soccer">Soccer</a>
+    <a href="/teams/new?sport=Football">Football</a>
+    <a href="/teams/new?sport=Basketball">Basketball</a>
+    <a href="/teams/new?sport=Baseball">Baseball</a>
+    <a href="/teams/new?sport=Hockey">Hockey</a>
+    <a href="/teams/new?sport=Motorsport">F1</a>
+
+    <ul>
+        <% teams && teams.forEach((team) => { %>
+          <li>
+            <strong>Name:</strong> <%= team.name %> <br>
+            <strong>Sport:</strong> <%= team.sport %> <br>
+            <a href="/teams/<%= team._id %>">View</a>
+            <form action="/teams/<%= team._id %>?sport=<%= team.sport %>" method="POST">
+              <button type="submit"><%= team.users.includes(user._id) ? 'Remove Team' : 'Add Team' %></button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+  
 </body>
 </html>

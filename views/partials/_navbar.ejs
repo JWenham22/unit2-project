@@ -2,7 +2,8 @@
 
 <nav>
     <% if(user) { %>
-    <a href="/users/<%= user._id %>/teams">Your Teams</a>
+    <a href="/teams">Your Teams</a>
+    <a href="/teams/new">Add Team</a>
     <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
     <a href="/auth/sign-in">Sign In</a>

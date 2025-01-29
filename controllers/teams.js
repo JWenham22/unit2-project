@@ -5,18 +5,25 @@ const Team = require('../models/team');
 
 // List all teams
 router.get('/', async (req, res) => {
-  try {
-    const teams = await Team.find({});
-    res.render('teams/index.ejs', { teams }); // Ensure EJS uses `teams`
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
+    try {
+        const teams = await Team.find({users: req.session.user._id});
+        res.render('teams/index.ejs', { teams }); // Ensure EJS uses `teams`
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
 
 // Show form to create a new team
-router.get('/new', (req, res) => {
-  res.render('teams/new.ejs');
+router.get('/new', async (req, res) => {
+    console.log(req.query.sport)
+    try {
+        const teams = await Team.find({sport: req.query.sport});
+        res.render('teams/new.ejs', { teams }); // Ensure EJS uses `teams`
+    } catch (error) {
+        console.log(error);
+        res.redirect('/teams/new');
+    }
 });
 
 // View a specific team
@@ -32,46 +39,36 @@ router.get('/:teamId', async (req, res) => {
 });
 
 // Create a new team
-router.post('/', async (req, res) => {
+router.post('/:teamId', async (req, res) => {
   try {
-    const currentUser = await User.findById(req.session.user._id);
-    if (!currentUser) throw new Error('User not found');
-
-    const newTeam = new Team({
-      name: req.body.name,
-      sport: req.body.sport,
-      league: req.body.league,
-      users: [currentUser._id],
-    });
-    await newTeam.save();
-
-    currentUser.teams.push(newTeam._id);
-    await currentUser.save();
-
-    res.redirect('/teams');
+   const team = await Team.findById(req.params.teamId)
+   console.log(team)
+   if (team.users.includes(req.session.user._id)) {
+    team.users.remove(req.session.user._id)
+   } else {
+       team.users.push(req.session.user._id)
+   }
+   await team.save()
   } catch (error) {
     console.log(error);
     res.redirect('/teams/new');
   }
+  res.redirect(`/teams/new?sport=${req.query.sport}`)
 });
 
 // Delete a team
 router.delete('/:teamId', async (req, res) => {
-  try {
-    const currentUser = await User.findById(req.session.user._id);
-    if (!currentUser) throw new Error('User not found');
-
-    await Team.findByIdAndDelete(req.params.teamId);
-    currentUser.teams = currentUser.teams.filter(
-      (teamId) => teamId.toString() !== req.params.teamId
-    );
-    await currentUser.save();
-
-    res.redirect('/teams');
-  } catch (error) {
-    console.log(error);
-    res.redirect('/teams');
-  }
+    try {
+        const team = await Team.findById(req.params.teamId)
+        console.log(team)
+        team.users.remove(req.session.user._id)
+        await team.save()
+       } catch (error) {
+         console.log(error);
+         res.redirect('/teams');
+       }
+       res.redirect(`/teams`)
 });
+
 
 module.exports = router;
