@@ -4,17 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Add a Team</title>
 </head>
 <body>
+  <div class="_navbar">
     <%- include('../partials/_navbar.ejs') %>
+  </div>  
     <h1>Add a Team</h1>
-    <a href="/teams/new?sport=Soccer">Soccer</a>
-    <a href="/teams/new?sport=Football">Football</a>
-    <a href="/teams/new?sport=Basketball">Basketball</a>
-    <a href="/teams/new?sport=Baseball">Baseball</a>
-    <a href="/teams/new?sport=Hockey">Hockey</a>
-    <a href="/teams/new?sport=Motorsport">F1</a>
+    <div class="sports-links">
+      <a href="/teams/new?sport=Soccer" class="sport-box">
+          <i class="fas fa-futbol"></i>
+          <span>Soccer</span>
+      </a>
+      <a href="/teams/new?sport=Football" class="sport-box">
+          <i class="fas fa-football-ball"></i>
+          <span>Football</span>
+      </a>
+      <a href="/teams/new?sport=Basketball" class="sport-box">
+          <i class="fas fa-basketball-ball"></i>
+          <span>Basketball</span>
+      </a>
+      <a href="/teams/new?sport=Baseball" class="sport-box">
+          <i class="fas fa-baseball-ball"></i>
+          <span>Baseball</span>
+      </a>
+      <a href="/teams/new?sport=Hockey" class="sport-box">
+          <i class="fas fa-hockey-puck"></i>
+          <span>Hockey</span>
+      </a>
+      <a href="/teams/new?sport=Motorsport" class="sport-box">
+          <i class="fas fa-car"></i>
+          <span>Motorsport</span>
+      </a>
+    </div>
+   
 
     <ul>
         <% teams && teams.forEach((team) => { %>

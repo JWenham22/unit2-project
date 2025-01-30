@@ -9,10 +9,11 @@
 <body class="index-body">
   <div class="index-container">
     <% if (user) { %>
+      <%- include('./partials/_navbar.ejs') %>
       <h1>Welcome to SportsU, <%= user.username %>!</h1>
-      <p>
+      <!-- <p>
         <a href="/auth/sign-out">Sign out</a>
-      </p>
+      </p> -->
       <a href="/teams/new">Add a team</a>
       <a href="/teams">Your Teams</a>
     <% } else { %>

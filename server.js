@@ -36,9 +36,11 @@ app.use(passUserToView);
 // Routes
 const authController = require('./controllers/auth');
 const teamsController = require('./controllers/teams');
+const profileController = require('./controllers/profile');
 
 app.use('/auth', authController);
 app.use('/teams', teamsController);
+app.use('/profile', profileController);
 
 app.get('/', (req, res) => {
   if (req.session.user) {

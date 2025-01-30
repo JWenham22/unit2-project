@@ -9,12 +9,28 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  bio: {
+    type: String,
+    default: '',
+  },
+  favoriteTeams: [{
+    type: String, 
+  }],
   teams: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Team',
-  },],
+  }],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
+
