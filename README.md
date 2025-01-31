@@ -8,8 +8,6 @@
 
   # Sports University
 
-  ### [CLICK TO DEMO](https://meetyourclassmates.herokuapp.com/)
-
   ##### Jack Wenham
 
   ## :pencil: Description
@@ -78,4 +76,6 @@
 - ⭐ Posting functionality to where users are able to post about their team or any other sports news.
 
 - ⭐ Messaging functionality to message other users.
+
+- ⭐ Some more css to make pages look a lot nicer
 
