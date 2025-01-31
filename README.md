@@ -31,12 +31,8 @@
   |   Description | Screenshot | 
   |:-------------:| -----------|
   | <h3>Main Page</h3> | ![image alt](https://github.com/JWenham22/unit2-project/blob/main/Screenshot%202025-01-30%20161542.png?raw=true)
-    width="700"
-  /> |
-  | <h3 align="center">Profile Page</h3> | 
-  ![image alt]([https://ibb.co/yBgRGRF9](https://github.com/JWenham22/unit2-project/blob/main/Screenshot%202025-01-30%20161542.png?raw=true))
-  width="700"
-  /> |
+    
+ 
 
 ## :fire: Getting Started
 
